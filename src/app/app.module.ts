@@ -13,6 +13,10 @@ import { PagebarComponent } from './layout/pagebar/pagebar.component';
 import { ClientComponent } from './layout/client/client.component';
 import {McBreadcrumbsModule} from 'ngx6-angular-breadcrumbs';
 import { AddclientComponent } from './layout/client/addclient/addclient.component';
+import {HttpClientModule} from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {FormsModule} from '@angular/forms';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -28,8 +32,12 @@ import { AddclientComponent } from './layout/client/addclient/addclient.componen
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    McBreadcrumbsModule.forRoot()
+    NgxPaginationModule,
+    McBreadcrumbsModule.forRoot(),
+    FormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
