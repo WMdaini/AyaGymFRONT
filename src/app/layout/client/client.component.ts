@@ -7,12 +7,13 @@ import {ClientService} from '../../service/client.service';
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
-  clientList ;
+  // tslint:disable-next-line:ban-types
+  clientList: any = [{}] ;
   p: number = 1;
   s = 5;
-  filtredCategory: string = 'Category';
-  filtredStatus: string = 'Client status';
-  filtredGender: string = 'Sexe';
+  filtredCategory: string;
+  filtredStatus: string ;
+  filtredGender: string ;
   filredStartDate: Date;
   filtredEndDate: Date;
   constructor(private service: ClientService) { }
@@ -27,7 +28,7 @@ export class ClientComponent implements OnInit {
   }
   filters() {
     console.log(this.filredStartDate);
-    this.service.getFiltredClients(this.filtredStatus).subscribe(res => {
+    this.service.getFiltredClients(this.filtredStatus, this.filtredGender).subscribe(res => {
       console.log(res);
       this.clientList = res;
     });

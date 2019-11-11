@@ -76,8 +76,9 @@
                       <div
                         class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
                         <select class="form-control input-height" [(ngModel)]="filtredGender" (change)="filters()">
+                          <option value="tous">Tous</option>
                           <option value="male">Homme</option>
-                          <option value="femel">Femme</option>
+                          <option value="female">Femme</option>
                         </select>
                       </div>
                     </div>
