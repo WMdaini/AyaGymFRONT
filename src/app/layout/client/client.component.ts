@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ClientService} from '../../service/client.service';
+import {Component, OnInit} from '@angular/core';
+import {ClientService} from '../../services/client.service';
+import {DynamicScriptLoaderService} from '../../services/dynamic-script-loader.service';
 
 @Component({
   selector: 'app-client',
@@ -16,24 +17,33 @@ export class ClientComponent implements OnInit {
   filtredGender: string ;
   filredStartDate: Date;
   filtredEndDate: Date;
-  constructor(private service: ClientService) { }
+  constructor(private service: ClientService, private dynamicScriptLoader: DynamicScriptLoaderService) { }
 
-  ngOnInit() {
-   this.getAllClients();
-  }
-  getAllClients() {
-    this.service.getAllClients().subscribe(result => {
-      this.clientList = result ;
-    });
-  }
-  filters() {
-    console.log(this.filredStartDate);
-    this.service.getFiltredClients(this.filtredStatus, this.filtredGender).subscribe(res => {
-      console.log(res);
-      this.clientList = res;
-    });
-  }
+    ngOnInit() {
+        this.getAllClients();
+        this.loadScripts();
+    }
+
+    getAllClients() {
+        this.service.getAllClients().subscribe(result => {
+            this.clientList = result;
+        });
+    }
+
+    filters() {
+        console.log(this.filredStartDate);
+        this.service.getFiltredClients(this.filtredStatus, this.filtredGender).subscribe(res => {
+            console.log(res);
+            this.clientList = res;
+        });
+    }
 
 
+    private loadScripts() {
+        // You can load multiple scripts by just providing the key as argument into load method of the service
+        this.dynamicScriptLoader.load('datetimepicker').then(data => {
+            // Script Loaded Successfully
+        }).catch(error => console.log(error));
+    }
 
 }
