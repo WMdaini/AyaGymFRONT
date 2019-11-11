@@ -38,10 +38,9 @@ export class ClientComponent implements OnInit {
         });
     }
 
-
     private loadScripts() {
         // You can load multiple scripts by just providing the key as argument into load method of the service
-        this.dynamicScriptLoader.load('datetimepicker').then(data => {
+        this.dynamicScriptLoader.load('bootstrap-datepicker','callback').then(data => {
             // Script Loaded Successfully
         }).catch(error => console.log(error));
     }

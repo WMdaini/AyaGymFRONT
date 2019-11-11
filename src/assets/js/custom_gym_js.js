@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     x = "conflidfs";
-
     $(document).ready(function () {
         var PathName = $(location).attr('pathname');
         $("a[href='" + PathName + "']").parents('li').addClass("start active open");
@@ -12,7 +11,5 @@ document.addEventListener('DOMContentLoaded', function () {
             return false;
         });
 
-
     });
-
 });

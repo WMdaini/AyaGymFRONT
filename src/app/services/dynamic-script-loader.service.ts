@@ -3,12 +3,13 @@ import {Injectable} from '@angular/core';
 interface Scripts {
     name: string;
     src: string;
+    async: boolean;
 }
 
 export const ScriptStore: Scripts[] = [
-    {name: 'date-range-picker', src: 'https://cdnjs.cloudflare.com/ajax/libs/tiny-date-picker/3.2.8/date-range-picker.js'},
-    {name: 'home-data', src: '/assets/js/pages/chart/chartjs/home-data.js'},
-    {name: 'datetimepicker', src: '/assets/plugins/material-datetimepicker/datetimepicker.js'},
+    {name: 'home-data', src: '/assets/js/pages/chart/chartjs/home-data.js' , async : true},
+    {name: 'bootstrap-datepicker', src: '/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.js', async :true},
+    {name: 'callback', src: '/assets/js/custom_gym_js_callback.js', async :true},
 ];
 
 declare var document: any;
@@ -25,7 +26,7 @@ export class DynamicScriptLoaderService {
         ScriptStore.forEach((script: any) => {
             this.scripts[script.name] = {
                 loaded: false,
-                src: script.src
+                src: script.src,
             };
         });
     }
@@ -43,6 +44,7 @@ export class DynamicScriptLoaderService {
                 let script = document.createElement('script');
                 script.type = 'text/javascript';
                 script.src = this.scripts[name].src;
+                script.async = true;
                 if (script.readyState) {  // IE
                     script.onreadystatechange = () => {
                         if (script.readyState === 'loaded' || script.readyState === 'complete') {
