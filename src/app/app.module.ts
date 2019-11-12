@@ -17,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule} from '@angular/forms';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { CategoryComponent } from './layout/category/category.component';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
         PagebarComponent,
         ClientComponent,
         AddclientComponent,
+        CategoryComponent,
     ],
     imports: [
         BrowserModule,

@@ -13,8 +13,8 @@ export class ClientService {
     return this.http.get(environment.baseUrl + '/client/list-clients');
   }
 
-  getFiltredClients(status, gender) {
-    return this.http.get(environment.baseUrl + '/client/clients-filter/' + status + '/' + gender);
+  getFiltredClients(status, gender, category) {
+    return this.http.put(environment.baseUrl + '/client/clients-filter/' + status + '/' + gender , category);
   }
 }
 

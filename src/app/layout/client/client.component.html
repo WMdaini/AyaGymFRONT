@@ -68,7 +68,8 @@
                       <div
                         class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height txt-full-width">
                         <select class="form-control input-height" [(ngModel)]="filtredCategory" (change)="filters()">
-                          <option value="5">5</option>
+                          <option value="all">Tous</option>
+                          <option *ngFor="let category of categoryList" [ngValue]="category">{{category.name}}</option>
                         </select>
                       </div>
                     </div>
